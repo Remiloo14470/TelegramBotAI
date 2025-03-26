@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f04f491-bf6f-434d-9b51-0017cab6f799" name="Changes" comment="еще какой то файл">
+    <list default="true" id="0f04f491-bf6f-434d-9b51-0017cab6f799" name="Changes" comment="убрала секретики">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/CHeck_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/CHeck_bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/bot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +25,12 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -35,12 +39,12 @@
     &quot;assignee&quot;: &quot;Remiloo14470&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Remiloo14470/TelegramBot_AI.git&quot;,
-    &quot;accountId&quot;: &quot;1b259294-799f-42a4-bff3-247ecd54217b&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Remiloo14470/TelegramBotAI.git",
+    "accountId": "1b259294-799f-42a4-bff3-247ecd54217b"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/.venv/ChooseAI_bot.py" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -140,7 +144,47 @@
       <option name="project" value="LOCAL" />
       <updated>1742982587772</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="убрала секретики">
+      <option name="closed" value="true" />
+      <created>1742982884217</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1742982884217</updated>
+    </task>
+    <task id="LOCAL-00009" summary="убрала секретики">
+      <option name="closed" value="true" />
+      <created>1742983072840</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1742983072840</updated>
+    </task>
+    <task id="LOCAL-00010" summary="убрала секретики">
+      <option name="closed" value="true" />
+      <created>1742983097430</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1742983097430</updated>
+    </task>
+    <task id="LOCAL-00011" summary="убрала секретики">
+      <option name="closed" value="true" />
+      <created>1742983116576</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1742983116576</updated>
+    </task>
+    <task id="LOCAL-00012" summary="убрала секретики">
+      <option name="closed" value="true" />
+      <created>1742983144912</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1742983144912</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,7 +192,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/TelegramBot_AI" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -160,6 +216,7 @@
     <MESSAGE value="Основыне файлы которые были игнорированы" />
     <MESSAGE value="доделаный бот" />
     <MESSAGE value="еще какой то файл" />
-    <option name="LAST_COMMIT_MESSAGE" value="еще какой то файл" />
+    <MESSAGE value="убрала секретики" />
+    <option name="LAST_COMMIT_MESSAGE" value="убрала секретики" />
   </component>
 </project>
