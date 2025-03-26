@@ -8,11 +8,11 @@ import aiohttp
 from openai import AsyncOpenAI
 
 
-bot_token = "7892230681:AAGMIcg2zicj7_rTQ71wAcu_fFHNhwNA2_Y"
-openai_api_key = "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"
-deepseek_api_key = "sk-7411fff5b44043f7943e24907e6ae599"
+bot_token = ""
+openai_api_key = ""
+deepseek_api_key = ""
 deepseek_api_url = "https://api.deepseek.com/v1/chat/completions"
-proxy_url = "http://oMbozo:hpbBrC@154.30.135.149:8000"
+proxy_url = ""
 
 bot = Bot(token=bot_token)
 dp = Dispatcher()
