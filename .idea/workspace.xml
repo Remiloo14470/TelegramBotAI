@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f04f491-bf6f-434d-9b51-0017cab6f799" name="Changes" comment="убрала секретики">
+    <list default="true" id="0f04f491-bf6f-434d-9b51-0017cab6f799" name="Changes" comment="убрала ненужные файлы">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/CHeck_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/CHeck_bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/chat_context.db" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/chat_context.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,12 +41,12 @@
     &quot;assignee&quot;: &quot;Remiloo14470&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Remiloo14470/TelegramBotAI.git",
-    "accountId": "1b259294-799f-42a4-bff3-247ecd54217b"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Remiloo14470/TelegramBotAI.git&quot;,
+    &quot;accountId&quot;: &quot;1b259294-799f-42a4-bff3-247ecd54217b&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/.venv/ChooseAI_bot.py" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -184,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742983144912</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="убрала ненужные файлы">
+      <option name="closed" value="true" />
+      <created>1742984449219</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1742984449219</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -217,6 +227,7 @@
     <MESSAGE value="доделаный бот" />
     <MESSAGE value="еще какой то файл" />
     <MESSAGE value="убрала секретики" />
-    <option name="LAST_COMMIT_MESSAGE" value="убрала секретики" />
+    <MESSAGE value="убрала ненужные файлы" />
+    <option name="LAST_COMMIT_MESSAGE" value="убрала ненужные файлы" />
   </component>
 </project>

@@ -8,11 +8,11 @@ import aiohttp
 from openai import AsyncOpenAI
 
 
-bot_token = ""
-openai_api_key = ""
-deepseek_api_key = ""
+bot_token = "7892230681:AAGMIcg2zicj7_rTQ71wAcu_fFHNhwNA2_Y"
+openai_api_key = "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"
+deepseek_api_key = "sk-7411fff5b44043f7943e24907e6ae599"
 deepseek_api_url = "https://api.deepseek.com/v1/chat/completions"
-proxy_url = ""
+proxy_url = "http://oMbozo:hpbBrC@154.30.135.149:8000"
 
 bot = Bot(token=bot_token)
 dp = Dispatcher()
@@ -71,7 +71,7 @@ def save_user_context(user_id, username, context, model=None):
 # Кнопки
 kb = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='OpenAI GPT', callback_data='openai')],
-    [InlineKeyboardButton(text='GPT-4 (DeepSeek)', callback_data='deepseek')]
+    [InlineKeyboardButton(text='DeepSeek', callback_data='deepseek')]
 ])
 
 # Обработчики
@@ -97,7 +97,7 @@ async def handle_callback(call: types.CallbackQuery):
 
     elif action == 'deepseek':
         save_user_context(user_id, username, [], "deepseek")
-        await call.message.answer("Выбрана модель GPT-4 от DeepSeek. Ты можешь начать общение. Чтобы вернуться к выбору "
+        await call.message.answer("Выбрана модель DeepSeek. Ты можешь начать общение. Чтобы вернуться к выбору "
                                   "модели набери команду /start")
 
 
@@ -168,7 +168,7 @@ async def handle_message(message: types.Message):
         data = {
             "model": "deepseek-chat",
             "messages": context,
-            "temperature": 0.7
+            "temperature": 1.3
         }
 
         try:
