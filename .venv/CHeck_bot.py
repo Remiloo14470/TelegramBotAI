@@ -9,7 +9,7 @@ from openai import AsyncOpenAI
 
 
 bot_token = "7892230681:AAGMIcg2zicj7_rTQ71wAcu_fFHNhwNA2_Y"
-openai_api_key = "YOUR_OPENAI_KEY"
+openai_api_key = "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"
 deepseek_api_key = "sk-7411fff5b44043f7943e24907e6ae599"
 deepseek_api_url = "https://api.deepseek.com/v1/chat/completions"
 proxy_url = "http://oMbozo:hpbBrC@154.30.135.149:8000"
@@ -45,7 +45,10 @@ def get_user_context(user_id):
     cursor.execute("SELECT context FROM user_contexts WHERE user_id=?", (user_id,))
     result = cursor.fetchone()
     conn.close()
-    return json.loads(result[0]) if result and result[0] else []
+    try:
+        return json.loads(result[0]) if result and result[0] else []
+    except (TypeError, json.JSONDecodeError):
+        return []
 
 # Получение модели пользователя
 def get_user_model(user_id):
@@ -72,12 +75,11 @@ kb = InlineKeyboardMarkup(inline_keyboard=[
 ])
 
 # Обработчики
-@router.message()
-async def start_handler(message: types.Message):
-    if message.text.lower() == "/start":
-        user_id = message.from_user.id
-        username = message.from_user.username
-        await message.answer(f"Привет, {username}! Выбери модель:", reply_markup=kb)
+@router.message(lambda message: message.text == "/start")
+async def start_handler(message:types.Message):
+    user_id = message.from_user.id
+    username = message.from_user.username
+    await message.answer(f"Привет, {username}! Выбери модель:", reply_markup=kb)
 
 
 @router.callback_query()
@@ -90,11 +92,13 @@ async def handle_callback(call: types.CallbackQuery):
 
     if action == 'openai':
         save_user_context(user_id, username, [], "openai")
-        await call.message.answer("Выбрана модель OpenAI GPT. Можешь начать общение.")
+        await call.message.answer("Выбрана модель OpenAI GPT. Ты можешь начать общение. Чтобы вернуться к выбору "
+                                  "модели набери команду /start")
 
     elif action == 'deepseek':
         save_user_context(user_id, username, [], "deepseek")
-        await call.message.answer("Выбрана модель GPT-4 от DeepSeek. Можешь начать общение.")
+        await call.message.answer("Выбрана модель GPT-4 от DeepSeek. Ты можешь начать общение. Чтобы вернуться к выбору "
+                                  "модели набери команду /start")
 
 
 @router.message()
@@ -121,20 +125,38 @@ async def handle_message(message: types.Message):
     context.append({"role": "user", "content": text})
 
     if model == "openai":
-        logging.info(f"Отправляем сообщение в OpenAI для {user_id}")
-        try:
-            response = await client.chat.completions.create(
-                model='gpt-4',
-                messages=context,
-                temperature=0.65
-            )
-            reply = response.choices[0].message.content
-            context.append({"role": "assistant", "content": reply})
-            save_user_context(user_id, username, context, model)
-            await message.answer(reply)
-        except Exception as e:
-            logging.error(f"Ошибка OpenAI: {e}")
-            await message.answer(f"Ошибка OpenAI: {e}")
+        logging.info(f"Отправляем запрос в OpenAI через прокси для {user_id}")
+
+        async with aiohttp.ClientSession() as session:
+            try:
+                response = await session.post(
+                    "https://api.openai.com/v1/chat/completions",
+                    headers={
+                        "Authorization": f"Bearer {openai_api_key}",
+                        "Content-Type": "application/json",
+                    },
+                    json={
+                        "model": "gpt-4",
+                        "messages": context,
+                        "temperature": 0.65
+                    },
+                    proxy=proxy_url
+                )
+
+                if response.status == 200:
+                    result = await response.json()
+                    reply = result["choices"][0]["message"]["content"]
+                    context.append({"role": "assistant", "content": reply})
+                    save_user_context(user_id, username, context, model)
+                    await message.answer(reply)
+                else:
+                    error_text = await response.text()
+                    logging.error(f"Ошибка OpenAI {response.status}: {error_text}")
+                    await message.answer(f"Ошибка OpenAI {response.status}: {error_text}")
+
+            except Exception as e:
+                logging.error(f"Ошибка при обращении к OpenAI: {e}")
+                await message.answer(f"Ошибка при обращении к OpenAI: {e}")
 
     elif model == "deepseek":
         logging.info(f"Отправляем сообщение в DeepSeek для {user_id}")
@@ -165,9 +187,9 @@ async def handle_message(message: types.Message):
             logging.error(f"Ошибка DeepSeek: {e}")
             await message.answer(f"Ошибка DeepSeek: {e}")
 
-# Запуск бота
+
 async def main():
-    dp.include_router(router)  # Подключаем обработчики
+    dp.include_router(router)
     logging.info("Бот запущен и слушает сообщения...")
     await dp.start_polling(bot)
 
