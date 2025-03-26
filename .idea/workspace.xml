@@ -4,13 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f04f491-bf6f-434d-9b51-0017cab6f799" name="Changes" comment="доделаный бот" />
+    <list default="true" id="0f04f491-bf6f-434d-9b51-0017cab6f799" name="Changes" comment="еще какой то файл">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/CHeck_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/CHeck_bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/bot.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager">
+  <component name="ChangesViewManager" show_ignored="true">
     <option name="groupingKeys">
       <option value="directory" />
     </option>
@@ -128,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742982467254</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="еще какой то файл">
+      <option name="closed" value="true" />
+      <created>1742982587772</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1742982587772</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +159,7 @@
     <MESSAGE value="Это доп коммит" />
     <MESSAGE value="Основыне файлы которые были игнорированы" />
     <MESSAGE value="доделаный бот" />
-    <option name="LAST_COMMIT_MESSAGE" value="доделаный бот" />
+    <MESSAGE value="еще какой то файл" />
+    <option name="LAST_COMMIT_MESSAGE" value="еще какой то файл" />
   </component>
 </project>

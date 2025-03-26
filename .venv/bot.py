@@ -12,7 +12,7 @@ bot_token = ""
 openai_api_key = ""
 deepseek_api_key = ""
 deepseek_api_url = "https://api.deepseek.com/v1/chat/completions"
-proxy_url = "http://oMbozo:hpbBrC@154.30.135.149:8000"
+proxy_url = ""
 
 logging.basicConfig(level=logging.INFO)
 
