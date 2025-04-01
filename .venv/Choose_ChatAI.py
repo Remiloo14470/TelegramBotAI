@@ -8,11 +8,11 @@ import aiohttp
 from openai import AsyncOpenAI
 
 
-bot_token = ""
-openai_api_key = ""
-deepseek_api_key = ""
+bot_token = "7892230681:AAGMIcg2zicj7_rTQ71wAcu_fFHNhwNA2_Y"
+openai_api_key = "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"
+deepseek_api_key = "sk-7411fff5b44043f7943e24907e6ae599"
 deepseek_api_url = "https://api.deepseek.com/v1/chat/completions"
-proxy_url = ""
+proxy_url = "http://oMbozo:hpbBrC@154.30.135.149:8000"
 
 bot = Bot(token=bot_token)
 dp = Dispatcher()
@@ -65,6 +65,7 @@ def save_user_context(user_id, username, context, model=None):
     cursor = conn.cursor()
     cursor.execute("INSERT OR REPLACE INTO user_contexts (user_id, username, context, model) VALUES (?, ?, ?, ?)",
                    (user_id, username, json.dumps(context), model if model else ""))
+    print(context)
     conn.commit()
     conn.close()
 
@@ -125,7 +126,7 @@ async def handle_message(message: types.Message):
     context.append({"role": "user", "content": text})
 
     if model == "openai":
-        logging.info(f"Отправляем запрос в OpenAI через прокси для {user_id}")
+        logging.info(f"Отправляем запрос в OpenAI для {user_id}")
 
         async with aiohttp.ClientSession() as session:
             try:
@@ -160,20 +161,22 @@ async def handle_message(message: types.Message):
 
     elif model == "deepseek":
         logging.info(f"Отправляем сообщение в DeepSeek для {user_id}")
-        headers = {
-            "Authorization": f"Bearer {deepseek_api_key}",
-            "Content-Type": "application/json"
-        }
-
-        data = {
-            "model": "deepseek-chat",
-            "messages": context,
-            "temperature": 1.3
-        }
 
         try:
             async with aiohttp.ClientSession() as session:
-                async with session.post(deepseek_api_url, headers=headers, json=data, proxy=proxy_url) as response:
+                async with session.post(
+                        deepseek_api_url,
+                        headers={
+                            "Authorization": f"Bearer {deepseek_api_key}",
+                            "Content-Type": "application/json"
+                        },
+                        json={
+                            "model": "deepseek-chat",
+                            "messages": context,
+                            "temperature": 1.3
+                        },
+                        proxy=proxy_url
+                ) as response:
                     result = await response.json()
                     if "choices" in result:
                         reply = result["choices"][0]["message"]["content"]
