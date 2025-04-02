@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0f04f491-bf6f-434d-9b51-0017cab6f799" name="Changes" comment="убрала секретики">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/CHeck_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/Choose_ChatAI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/Choose_ChatAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/Choose_ChatAI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.venv/chat_context.db" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/chat_context.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,19 +59,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.CHeck_bot.executor": "Run",
-    "Python.Choose_ChatAI.executor": "Run",
-    "Python.YPEP_aiorgram.executor": "Run",
-    "Python.bot.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/ramin/PycharmProjects/TelegramBotAI",
-    "settings.editor.selected.configurable": "advanced.settings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.CHeck_bot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Choose_ChatAI.executor&quot;: &quot;Run&quot;,
+    &quot;Python.YPEP_aiorgram.executor&quot;: &quot;Run&quot;,
+    &quot;Python.bot.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ramin/PycharmProjects/TelegramBotAI&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -211,7 +211,23 @@
       <option name="project" value="LOCAL" />
       <updated>1742988369570</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="переименовала основоной файл">
+      <option name="closed" value="true" />
+      <created>1743491086446</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1743491086446</updated>
+    </task>
+    <task id="LOCAL-00017" summary="убрала секретики">
+      <option name="closed" value="true" />
+      <created>1743491176733</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1743491176733</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -245,6 +261,7 @@
     <MESSAGE value="еще какой то файл" />
     <MESSAGE value="убрала ненужные файлы" />
     <MESSAGE value="исправила названия кнопок" />
+    <MESSAGE value="переименовала основоной файл" />
     <MESSAGE value="убрала секретики" />
     <option name="LAST_COMMIT_MESSAGE" value="убрала секретики" />
   </component>

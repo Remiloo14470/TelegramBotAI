@@ -8,11 +8,11 @@ import aiohttp
 from openai import AsyncOpenAI
 
 
-bot_token = ""
-openai_api_key = ""
-deepseek_api_key = ""
+bot_token = "7892230681:AAGMIcg2zicj7_rTQ71wAcu_fFHNhwNA2_Y"
+openai_api_key = "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"
+deepseek_api_key = "sk-7411fff5b44043f7943e24907e6ae599"
 deepseek_api_url = "https://api.deepseek.com/v1/chat/completions"
-proxy_url = ""
+proxy_url = "http://oMbozo:hpbBrC@154.30.135.149:8000"
 
 bot = Bot(token=bot_token)
 dp = Dispatcher()
@@ -65,7 +65,6 @@ def save_user_context(user_id, username, context, model=None):
     cursor = conn.cursor()
     cursor.execute("INSERT OR REPLACE INTO user_contexts (user_id, username, context, model) VALUES (?, ?, ?, ?)",
                    (user_id, username, json.dumps(context), model if model else ""))
-    print(context)
     conn.commit()
     conn.close()
 
@@ -92,12 +91,14 @@ async def handle_callback(call: types.CallbackQuery):
     logging.info(f"Пользователь {user_id} выбрал модель: {action}")
 
     if action == 'openai':
-        save_user_context(user_id, username, [], "openai")
+        context = get_user_context(user_id)
+        save_user_context(user_id, username, context, "openai")
         await call.message.answer("Выбрана модель OpenAI GPT. Ты можешь начать общение. Чтобы вернуться к выбору "
                                   "модели набери команду /start")
 
     elif action == 'deepseek':
-        save_user_context(user_id, username, [], "deepseek")
+        context = get_user_context(user_id)
+        save_user_context(user_id, username, context, "deepseek")
         await call.message.answer("Выбрана модель DeepSeek. Ты можешь начать общение. Чтобы вернуться к выбору "
                                   "модели набери команду /start")
 
@@ -149,6 +150,7 @@ async def handle_message(message: types.Message):
                     reply = result["choices"][0]["message"]["content"]
                     context.append({"role": "assistant", "content": reply})
                     save_user_context(user_id, username, context, model)
+                    logging.info(f"Контекст сохранен для {user_id}: {context}")
                     await message.answer(reply)
                 else:
                     error_text = await response.text()
@@ -161,7 +163,13 @@ async def handle_message(message: types.Message):
 
     elif model == "deepseek":
         logging.info(f"Отправляем сообщение в DeepSeek для {user_id}")
+        logging.info(f"Текущий контекст перед отправкой: {context}")
 
+        system_prompt = {
+            "role": "system",
+            "content": "Ты — DeepSeek Chat, созданный китайской компанией DeepSeek. Не называй себя ChatGPT или OpenAI."
+        }
+        context = [system_prompt] + context
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.post(
@@ -178,10 +186,13 @@ async def handle_message(message: types.Message):
                         proxy=proxy_url
                 ) as response:
                     result = await response.json()
+                    logging.info(f"Ответ от DeepSeek API: {result}")
                     if "choices" in result:
                         reply = result["choices"][0]["message"]["content"]
                         context.append({"role": "assistant", "content": reply})
+                        logging.info(f"Обновленный контекст после ответа: {context}")
                         save_user_context(user_id, username, context, model)
+                        logging.info(f"Контекст сохранен для {user_id}: {context}")
                         await message.answer(reply)
                     else:
                         logging.error(f"Ошибка в ответе API: {result}")
