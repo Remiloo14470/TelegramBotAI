@@ -36,6 +36,18 @@ def init_db():
     conn.commit()
     conn.close()
 
+
+def clear_database():
+    conn = sqlite3.connect("chat_context.db")
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM user_contexts")
+    conn.commit()
+    conn.close()
+
+# clear_database()
+# print("База данных очищена!")
+
 init_db()
 
 # Получение контекста пользователя
@@ -91,14 +103,15 @@ async def handle_callback(call: types.CallbackQuery):
     logging.info(f"Пользователь {user_id} выбрал модель: {action}")
 
     if action == 'openai':
-        context = get_user_context(user_id)
-        save_user_context(user_id, username, context, "openai")
+        save_user_context(user_id, username, [], "openai")
         await call.message.answer("Выбрана модель OpenAI GPT. Ты можешь начать общение. Чтобы вернуться к выбору "
                                   "модели набери команду /start")
 
     elif action == 'deepseek':
         context = get_user_context(user_id)
         save_user_context(user_id, username, context, "deepseek")
+        cont = get_user_context(user_id)
+        print(cont)
         await call.message.answer("Выбрана модель DeepSeek. Ты можешь начать общение. Чтобы вернуться к выбору "
                                   "модели набери команду /start")
 
@@ -123,7 +136,6 @@ async def handle_message(message: types.Message):
     context = get_user_context(user_id)
     if not isinstance(context, list):
         context = []
-
     context.append({"role": "user", "content": text})
 
     if model == "openai":
@@ -169,7 +181,10 @@ async def handle_message(message: types.Message):
             "role": "system",
             "content": "Ты — DeepSeek Chat, созданный китайской компанией DeepSeek. Не называй себя ChatGPT или OpenAI."
         }
+        if model == "deepseek" and not any(msg.get("role") == "system" for msg in context):
+            context.insert(0, system_prompt)
         context = [system_prompt] + context
+
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.post(
